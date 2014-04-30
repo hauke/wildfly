@@ -550,13 +550,12 @@ public class CoreModelTestDelegate {
                 classLoaderBuilder.createFromFile(file);
                 legacyCl = classLoaderBuilder.build();
             } else {
-                String version = LegacyKernelServicesInitializer.VersionLocator.getCurrentVersion();
-                classLoaderBuilder.addMavenResourceURL("org.jboss.as:jboss-as-core-model-test-framework:"+version);
-                classLoaderBuilder.addMavenResourceURL("org.jboss.as:jboss-as-model-test:"+version);
+                classLoaderBuilder.addMavenResourceURL("org.jboss.as:jboss-as-core-model-test-framework:7.2.0.Alpha1-redhat-4");
+                classLoaderBuilder.addMavenResourceURL("org.jboss.as:jboss-as-model-test:7.2.0.Alpha1-redhat-4");
 
                 if (testControllerVersion != TestControllerVersion.MASTER) {
                     classLoaderBuilder.addRecursiveMavenResourceURL(testControllerVersion.getLegacyControllerMavenGav());
-                    classLoaderBuilder.addMavenResourceURL("org.jboss.as:jboss-as-core-model-test-controller-" + testControllerVersion.getTestControllerVersion() + ":" +version);
+                    classLoaderBuilder.addMavenResourceURL("org.jboss.as:jboss-as-core-model-test-controller-" + testControllerVersion.getTestControllerVersion() + ":" + VERSION);
                 }
                 legacyCl = classLoaderBuilder.build(file);
             }
